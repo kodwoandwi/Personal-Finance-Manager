@@ -2,9 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const authRoutes = require('./routes/auth');
-const expenseRoutes = require('./routes/expense');
-const incomeRoutes = require('./routes/income');
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,10 +18,6 @@ mongoose.connect('mongodb://localhost:27017/personal-finance-manager', {
 app.get('/', (req, res) => {
   res.send('Personal Finance Manager API');
 });
-
-app.use('/api/auth', authRoutes);
-app.use('/api/expenses', expenseRoutes);
-app.use('/api/income', incomeRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
